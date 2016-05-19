@@ -1,7 +1,7 @@
-function [result] = calculate_vrp_insert(form)
+function [result] = calculate_vrpinsert(form)
 % Example:
 % load 'imbros' % Loads XY, Name
-% calculate_vrp_insert(imbros)
+% calculate_vrpinsert(imbros)
 close
 result = {};
 XY = form.XY;
@@ -20,8 +20,9 @@ end
 result.names = names;
 
 % Check times
-t = zeros(1,15);
-for n = 1:15
+number = 15;
+t = zeros(1,number);
+for n = 1:number
     tic;
     [loc,TC] = vrpinsert(C,[],[],[],[],h);
     t(n) = toc;
@@ -32,8 +33,9 @@ result.TC = TC;
 result.times = t;
 result.mean_times = mean(result.times);
 
-str = sprintf('VRP Insert: Mean Calculation Times = %f and %d Loc Seqs', result.mean_times,length(t));
-fprintf('%s\n\n',str)
-title(str)
 figure(2)
 plot(t)
+grid on
+str = sprintf('VRP Insert: Mean Calculation Times = %f and %d number of execution', result.mean_times,length(t));
+fprintf('%s\n\n',str)
+title(str)
