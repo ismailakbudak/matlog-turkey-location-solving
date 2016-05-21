@@ -15,15 +15,15 @@ makemap(XY)
 h = pplot(XY,'r.');
 pplot(XY,form.Name(1:size(XY,1)));
 pplot({loc},XY,'g')
-
-title('Spacefilling curve TSP Loc Seq Construction')	
-
+ 
 fprintf('%f\n',TD);
 names = {};
 for j = 1:length(loc) - 1
     names{j} = form.Name(loc(j));
 end
 result.names = names;
+result.loc = loc;
+result.TD = TD;
 
 % Check times
 number = 15;
@@ -34,9 +34,7 @@ for n = 1:number
 	TD = locTC(loc,C)
     t(n) = toc;
 end
-
-result.loc = loc;
-result.TD = TD;
+title(['Spacefilling curve TSP Loc Seq Construction: TD = ' num2str(sum(TD))])
 result.times = t;
 result.mean_times = mean(result.times);
 
