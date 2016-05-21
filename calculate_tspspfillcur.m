@@ -1,7 +1,7 @@
 function [result] = calculate_tspspfillcur(form)
 % Example:
 % load 'imbros' % Loads XY, Name
-% calculate_vrpsavings(imbros)
+% calculate_tspspfillcur(imbros)
 close
 result = {};
 XY = form.XY;

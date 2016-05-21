@@ -1,7 +1,7 @@
 function [result] = calculate_vrpsweep(form)
 % Example:
 % load 'imbros' % Loads XY, Name
-% calculate_vrpsavings(imbros)
+% calculate_vrpsweep(imbros)
 close
 result = {};
 XY = form.XY;

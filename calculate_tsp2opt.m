@@ -1,7 +1,7 @@
 function [result] = calculate_tsp2opt(form)
 % Example:
 % load 'imbros' % Loads XY, Name
-% calculate_vrpinsert(imbros)
+% calculate_tsp2opt(imbros)
 close
 result = {};
 XY = form.XY;
