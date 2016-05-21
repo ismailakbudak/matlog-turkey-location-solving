@@ -19,6 +19,9 @@ for j = 1:length(loc) - 1
     names{j} = form.Name(loc(j));
 end
 result.names = names;
+result.bestvtx = bestvtx;
+result.loc = loc;
+result.TC = TC;
 
 % Check times
 number = 15;
@@ -28,10 +31,8 @@ for n = 1:number
 	[loc,TC,bestvtx] = tspnneighbor(C,[],h); TC, bestvtx
     t(n) = toc;
 end
+title(['Nearest Neighbor TSP Loc Seq Construction: TC = ' num2str(sum(TC))])
 
-result.bestvtx = bestvtx;
-result.loc = loc;
-result.TC = TC;
 result.times = t;
 result.mean_times = mean(result.times);
 
