@@ -1,23 +1,18 @@
-function [result] = calculate_tspspfillcur(form)
+function [result] = calculate_tspchinsert(form)
 % Example:
 % load 'imbros' % Loads XY, Name
-% calculate_vrpsavings(imbros)
+% calculate_tspchinsert(imbros)
 close
 result = {};
 XY = form.XY;
 C = dists(XY,XY,'km');
-tic;
-loc = tspspfillcur(XY);
-TD = locTC(loc,C)
-result.Time = toc;
-
 makemap(XY)
 h = pplot(XY,'r.');
 pplot(XY,form.Name(1:size(XY,1)));
-pplot({loc},XY,'g')
-
-title('Spacefilling curve TSP Loc Seq Construction')	
-
+tic;
+loc = tspchinsert(XY,h);
+TD = locTC(loc,C)
+result.Time = toc;
 fprintf('%f\n',TD);
 names = {};
 for j = 1:length(loc) - 1
@@ -30,7 +25,7 @@ number = 15;
 t = zeros(1,number);
 for n = 1:number
     tic;
-	loc = tspspfillcur(XY);
+	loc = tspchinsert(XY,h);
 	TD = locTC(loc,C)
     t(n) = toc;
 end
@@ -43,6 +38,6 @@ result.mean_times = mean(result.times);
 figure(2)
 plot(t)
 grid on
-str = sprintf('TSP Spacefilling curve: Mean Calculation Times = %f and %d number of execution', result.mean_times,length(t));
+str = sprintf('TSP Convex hull insertion: Mean Calculation Times = %f and %d number of execution', result.mean_times,length(t));
 fprintf('%s\n\n',str)
 title(str)
