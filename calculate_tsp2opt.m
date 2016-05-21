@@ -12,14 +12,16 @@ h = pplot(XY,'r.');
 tic;
 loc = [1 randperm(size(XY,1)-1)+1 1];
 [loc,TC] = tsp2opt(loc,C,[],[],[],h);
-result.Time = toc;
-fprintf('%f\n',TC);
+result.Time = toc; 
 pplot({loc},XY,form.Name(1:size(XY,1)))
+
 names = {};
 for j = 1:length(loc) - 1
     names{j} = form.Name(loc(j));
 end
 result.names = names;
+result.loc = loc;
+result.TC = TC;
 
 % Check times
 number = 15;
@@ -35,9 +37,8 @@ for n = 1:number
     costs(n) = TC;
     fprintf('%f\n',TC);
 end
+title(['TSP 2-Opt Loc Seq Improvement: TC = ' num2str(sum(TC))])
 
-result.loc = loc;
-result.TC = TC;
 result.calculations = {} 
 result.calculations.times = times;
 result.calculations.locs = locs;
@@ -55,5 +56,4 @@ figure(2)
 plot(times)
 grid on
 str = sprintf('TSP2OPT 2-optimal exchange procedure: Mean Calculation Times = %f and %d number of execution', result.mean_times,number);
-fprintf('%s\n\n',str)
 title(str)
