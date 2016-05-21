@@ -13,7 +13,9 @@ tic;
 loc = tspchinsert(XY,h);
 TD = locTC(loc,C)
 result.Time = toc;
-fprintf('%f\n',TD);
+result.loc = loc;
+result.TD = TD;
+
 names = {};
 for j = 1:length(loc) - 1
     names{j} = form.Name(loc(j));
@@ -28,10 +30,9 @@ for n = 1:number
 	loc = tspchinsert(XY,h);
 	TD = locTC(loc,C)
     t(n) = toc;
-end
+end 
+title(['Convex Hull Insertion TSP Loc Seq Construction: TD = ' num2str(sum(TD))])
 
-result.loc = loc;
-result.TD = TD;
 result.times = t;
 result.mean_times = mean(result.times);
 
@@ -39,5 +40,4 @@ figure(2)
 plot(t)
 grid on
 str = sprintf('TSP Convex hull insertion: Mean Calculation Times = %f and %d number of execution', result.mean_times,length(t));
-fprintf('%s\n\n',str)
 title(str)
