@@ -5,15 +5,15 @@ function [result] = calculate_tsp2opt(form)
 close
 result = {};
 XY = form.XY;
-rand('state',100)
+% rand('state',100)
 C = dists(XY,XY,'km');
 makemap(XY)
 h = pplot(XY,'r.');
-tic;
+% tic;
 loc = [1 randperm(size(XY,1)-1)+1 1];
 [loc,TC] = tsp2opt(loc,C,[],[],[],h);
-result.Time = toc; 
-pplot({loc},XY,form.Name(1:size(XY,1)))
+% result.Time = toc; 
+pplot({loc},XY,form.Name(1:size(XY,1)) )
 
 names = {};
 for j = 1:length(loc) - 1
@@ -22,22 +22,22 @@ end
 result.names = names;
 result.loc = loc;
 result.TC = TC;
+title(['TSP 2-Opt Loc Seq Improvement: TC = ' num2str(sum(TC))])
 
 % Check times
-number = 1;
+number = 15;
 times = zeros(1,number);
 locs = {}
 costs = zeros(1,number);
 for n = 1:number
     tic;
 	loc = [1 randperm(size(XY,1)-1)+1 1];
-	[loc,TC] = tsp2opt(loc,C,[],[],[],h);
+	[loc,TC] = tsp2opt(loc,C,[],[],[],[]);
     times(n) = toc;
     locs{n} = loc;
     costs(n) = TC;
     fprintf('%f\n',TC);
 end
-title(['TSP 2-Opt Loc Seq Improvement: TC = ' num2str(sum(TC))])
 
 result.calculations = {} 
 result.calculations.times = times;
@@ -52,8 +52,8 @@ result.min_loc = min_loc
 result.mean_times = mean(result.calculations.times);
 result.mean_costs = mean(result.calculations.costs);
 
-figure(2)
-plot(times)
-grid on
-str = sprintf('TSP2OPT 2-optimal exchange procedure: Mean Calculation Times = %f and %d number of execution', result.mean_times,number);
-title(str)
+% figure(2)
+% plot(times)
+% grid on
+% str = sprintf('TSP2OPT 2-optimal exchange procedure: Mean Calculation Times = %f and %d number of execution', result.mean_times,number);
+% title(str)
