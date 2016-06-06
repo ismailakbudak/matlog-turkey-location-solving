@@ -26,7 +26,7 @@ result.loc = loc;
 result.TD = TD;
 
 % Check times
-number = 15;
+number = 1;
 t = zeros(1,number);
 for n = 1:number
     tic;

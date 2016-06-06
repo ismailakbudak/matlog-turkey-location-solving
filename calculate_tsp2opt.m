@@ -24,7 +24,7 @@ result.loc = loc;
 result.TC = TC;
 
 % Check times
-number = 15;
+number = 1;
 times = zeros(1,number);
 locs = {}
 costs = zeros(1,number);
