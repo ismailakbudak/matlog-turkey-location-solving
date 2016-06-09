@@ -17,7 +17,7 @@ for j = 1:length(loc{1}) - 1
     names{j} = form.Name(loc{1}(j));
 end
 result.names = names;
-result.loc = loc;
+result.loc = loc{1,1};
 result.TC = TC;
 title(sprintf('VRP Insert: Final TC = %f and %d Loc Seqs', sum(TC),length(TC)))
 
