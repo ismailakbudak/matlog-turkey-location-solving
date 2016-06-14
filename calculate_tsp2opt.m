@@ -13,7 +13,7 @@ h = pplot(XY,'r.');
 loc = [1 randperm(size(XY,1)-1)+1 1];
 [loc,TC] = tsp2opt(loc,C,[],[],[],h);
 % result.Time = toc; 
-pplot({loc},XY,form.Name(1:size(XY,1)) )
+pplot({loc},XY,num2cellstr(1:size(XY,1)) )
 
 names = {};
 for j = 1:length(loc) - 1

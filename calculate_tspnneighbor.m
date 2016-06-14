@@ -8,7 +8,7 @@ XY = form.XY;
 C = dists(XY,XY,'km');
 makemap(XY)
 h = pplot(XY,'r.');
-pplot(XY,form.Name(1:size(XY,1)));
+pplot(XY,num2cellstr(1:size(XY,1)));
 % tic;
 [loc,TC] = tspnneighbor(C,1,h); TC
 [loc,TC,bestvtx] = tspnneighbor(C,[],h); TC, bestvtx

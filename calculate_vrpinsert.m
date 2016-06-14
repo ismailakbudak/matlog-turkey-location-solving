@@ -6,11 +6,11 @@ close
 result = {};
 XY = form.XY;
 C = dists(XY,XY,'km');
-makemap(XY)
-h = pplot(XY,'r.');
-pplot(XY,form.Name(1:size(XY,1)));
+% makemap(XY)
+% h = pplot(XY,'r.');
+% pplot(XY,num2cellstr(1:size(XY,1)));
 % tic;
-[loc,TC] = vrpinsert(C,[],[],[],[],h);
+[loc,TC] = vrpinsert(C,[],[],[],[],[]);
 % result.Time = toc; 
 names = {};
 for j = 1:length(loc{1}) - 1
@@ -19,18 +19,18 @@ end
 result.names = names;
 result.loc = loc{1,1};
 result.TC = TC;
-title(sprintf('VRP Insert: Final TC = %f and %d Loc Seqs', sum(TC),length(TC)))
-
-% Check times
-number = 15;
-t = zeros(1,number);
-for n = 1:number
-    tic;
-    [loc,TC] = vrpinsert(C,[],[],[],[],[]);
-    t(n) = toc;
-end
-result.times = t;
-result.mean_times = mean(result.times);
+% title(sprintf('VRP Insert: Final TC = %f and %d Loc Seqs', sum(TC),length(TC)))
+% 
+% % Check times
+% number = 15;
+% t = zeros(1,number);
+% for n = 1:number
+%     tic;
+%     [loc,TC] = vrpinsert(C,[],[],[],[],[]);
+%     t(n) = toc;
+% end
+% result.times = t;
+% result.mean_times = mean(result.times);
 
 % figure(2)
 % plot(t)

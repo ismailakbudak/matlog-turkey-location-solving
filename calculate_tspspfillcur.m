@@ -13,7 +13,7 @@ TD = locTC(loc,C)
 
 makemap(XY)
 h = pplot(XY,'r.');
-pplot(XY,form.Name(1:size(XY,1)));
+pplot(XY,num2cellstr(1:size(XY,1)));
 pplot({loc},XY,'g')
 
 names = {};
