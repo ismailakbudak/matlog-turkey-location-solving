@@ -2,6 +2,8 @@ function [result] = calculate_vrpsavings(form)
 % Calculate vrpsavings result
 % form parameter contains XY(coordinate of locations) and Name(name of location)
 %
+% Author: Akbudak, I., Karagul, K., Gunduz, G., Tokat, S. (2016)
+%
 % Example:
 % load 'imbros' % Loads XY, Name
 % calculate_vrpsavings(imbros)

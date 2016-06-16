@@ -2,6 +2,8 @@ function [result] = calculate_vrpinsert(form)
 % Calculate vrpinsert result
 % form parameter contains XY(coordinate of locations) and Name(name of location)
 %
+% Author: Akbudak, I., Karagul, K., Gunduz, G., Tokat, S. (2016)
+%
 % Example:
 % load 'imbros' % Loads XY, Name
 % calculate_vrpinsert(imbros)
@@ -10,7 +12,7 @@ close
 result = {};
 XY = form.XY;
 C = dists(XY,XY,'km');
-% makemap(XY)
+makemap(XY)
 h = pplot(XY,'r.');
 pplot(XY,num2cellstr(1:size(XY,1)));
 % tic;

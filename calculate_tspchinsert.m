@@ -2,6 +2,8 @@ function [result] = calculate_tspchinsert(form)
 % Calculate tspchinsert result
 % form parameter contains XY(coordinate of locations) and Name(name of location)
 %
+% Author: Akbudak, I., Karagul, K., Gunduz, G., Tokat, S. (2016)
+%
 % Example:
 % load 'imbros' % Loads XY, Name
 % calculate_tspchinsert(imbros)
