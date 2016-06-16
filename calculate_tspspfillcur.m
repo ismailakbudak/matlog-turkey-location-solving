@@ -1,7 +1,12 @@
 function [result] = calculate_tspspfillcur(form)
+% Calculate tspspfillcur result 
+% form parameter contains XY(coordinate of locations) and Name(name of location)
+%
+% Author: Akbudak, I., Karagul, K., Gunduz, G., Tokat, S. (2016)
 % Example:
 % load 'imbros' % Loads XY, Name
 % calculate_tspspfillcur(imbros)
+%
 close
 result = {};
 XY = form.XY;
@@ -26,6 +31,7 @@ result.TD = TD;
 title(['Spacefilling curve TSP Loc Seq Construction: TD = ' num2str(sum(TD))])
 
 % Check times
+% Make calculation 'number' times and store result
 number = 15;
 t = zeros(1,number);
 for n = 1:number
@@ -37,6 +43,7 @@ end
 result.times = t;
 result.mean_times = mean(result.times);
 
+% % Show calculation time graphic
 % figure(2)
 % plot(t)
 % grid on

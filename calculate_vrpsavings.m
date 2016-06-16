@@ -1,7 +1,11 @@
 function [result] = calculate_vrpsavings(form)
+% Calculate vrpsavings result
+% form parameter contains XY(coordinate of locations) and Name(name of location)
+%
 % Example:
 % load 'imbros' % Loads XY, Name
 % calculate_vrpsavings(imbros)
+% 
 close
 result = {};
 XY = form.XY;
@@ -22,6 +26,7 @@ result.TC = TC;
 title(sprintf('VRP Savings: Final TC = %f and %d Loc Seqs', sum(TC),length(TC)))
 
 % Check times
+% Make calculation 'number' times and store result
 number = 15;
 t = zeros(1,number);
 for n = 1:number
@@ -32,6 +37,7 @@ end
 result.times = t;
 result.mean_times = mean(result.times);
 
+% % Show calculation time graphic
 % figure(2)
 % plot(t)
 % grid on
